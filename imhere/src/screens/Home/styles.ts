@@ -36,5 +36,11 @@ export const styles = StyleSheet.create({
     backgroundColor: '#31CF67',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  form: {
+    width: '100%',
+    flexDirection: 'row',
+    marginTop: 36,
+    marginBottom: 42
   }
 })
