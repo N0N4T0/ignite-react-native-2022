@@ -43,7 +43,6 @@ export function Home(){
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
           <Participant 
-            key={item} 
             name={item} 
             onRemove={() => handleParticipantRemove("Rodrigo")} 
           />
