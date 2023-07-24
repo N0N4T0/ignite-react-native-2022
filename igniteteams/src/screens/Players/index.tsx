@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Alert, FlatList, TextInput } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import { Button } from "@components/Button";
 import { ButtonIcon } from "@components/ButtonIcon";
@@ -27,6 +27,7 @@ export function Players() {
   const [team, setTeam] = useState('Time A');
   const [players, setPlayers] = useState<PlayerStorageDTO[]>([]);
 
+  const navigation = useNavigation();
   const route = useRoute()
 
   const { group } = route.params as RouteParams;
@@ -45,9 +46,9 @@ export function Players() {
 
     try {
       await playerAddByGroup(newPlayer, group);
-
+    
       newPlayerNameInputRef.current?.blur();
-
+    
       setNewPlayerName('');
       fetchPlayersByTeam();
     } catch (error) {
@@ -55,20 +56,20 @@ export function Players() {
         Alert.alert('Nova pessoa', error.message);
       } else {
         console.log(error);
-        Alert.alert('Nova pessoa', 'Não foi possível adicionar.')
+        Alert.alert('Nova pessoa', 'Não foi possível adicionar.');
       }
     }
   }
 
   async function fetchPlayersByTeam() {
     try {
-      const playersByTeam = await playersGetByGroupAndTeam(group, team)
-
-      setPlayers(playersByTeam)
-
+      const playersByTeam = await playersGetByGroupAndTeam(group, team);
+  
+      setPlayers(playersByTeam);
     } catch (error) {
-      console.log(error)
-      Alert.alert('Pessoas', 'Não foi possível carregar as pessoas do time selecionado')
+      console.log(error);
+  
+      Alert.alert('Pessoas', 'Não foi possível carregar as pessoas do time selecionado.');
     }
   }
 
@@ -77,10 +78,9 @@ export function Players() {
       await playerRemoveByGroup(playerName, group);
 
       fetchPlayersByTeam()
-
     } catch (error) {
       console.log(error);
-
+      
       Alert.alert('Remover pessoa', 'Não foi possível remover essa pessoa.');
     }
   }
@@ -99,16 +99,19 @@ export function Players() {
       />
 
       <Form>
-        <Input 
+        <Input
           inputRef={newPlayerNameInputRef}
           placeholder="Nome da pessoa"
+          value={newPlayerName}
+          onChangeText={setNewPlayerName}
           autoCorrect={false}
           onSubmitEditing={handleAddPlayer}
           returnKeyType="done"
         />
 
         <ButtonIcon 
-          icon="add" 
+          icon="add"
+          onPress={handleAddPlayer}  
         />
       </Form>
 
