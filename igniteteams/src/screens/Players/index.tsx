@@ -69,7 +69,10 @@ export function Players() {
       console.log(error);
   
       Alert.alert('Pessoas', 'Não foi possível carregar as pessoas do time selecionado.');
-    }
+    } 
+      finally {
+      setIsLoading(false);
+    } 
   }
 
   async function handlePlayerRemove(playerName: string) {
