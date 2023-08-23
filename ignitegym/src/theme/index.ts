@@ -54,7 +54,7 @@ export const THEME = extendTheme({
           },
         },
         outline: {
-          borderColor: `gray.100`,
+          borderColor: "green.500",
           borderWidth: 1,
           bg: "transparent",
           rounded: "full",
