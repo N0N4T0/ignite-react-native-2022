@@ -1,5 +1,5 @@
 import { Pressable, PressableProps, Text } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { THEME } from '../../styles/theme';
 import { styles } from './styles';
@@ -27,11 +27,11 @@ export function Level({ title, type = 'EASY', isChecked = false, ...rest }: Prop
   const COLOR = TYPE_COLORS[type];
 
   function onPressIn(){
-    scale.value = 1.1;
+    scale.value = withTiming(1.1);
   }
 
   function onPressOut(){
-    scale.value = 1;
+    scale.value = withTiming(1);
   }
 
   return (
