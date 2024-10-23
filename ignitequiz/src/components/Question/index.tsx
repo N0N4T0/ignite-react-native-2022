@@ -38,7 +38,7 @@ export function Question({ question, alternativeSelected, setAlternativeSelected
     }
   })
 
-  const exitingKeyFram = new Keyframe({
+  const exitingKeyFrame = new Keyframe({
     from: {
       opacity: 1,
       transform: [
@@ -58,8 +58,8 @@ export function Question({ question, alternativeSelected, setAlternativeSelected
   return (
     <Animated.View
       style={styles.container}
-      entering={enteringKeyFrame}
-      exiting={exitingKeyFram}
+      entering={enteringKeyFrame.duration(400)}
+      exiting={exitingKeyFrame.duration(400)}
     >
       <Text style={styles.title}>
         {question.title}
