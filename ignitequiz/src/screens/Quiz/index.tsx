@@ -157,13 +157,16 @@ export function Quiz() {
     }
   })
 
-  const onPan = Gesture.Pan().onUpdate((event) => {
-    const moveToLeft = event.translationX < 0
+  const onPan = Gesture
+    .Pan()
+    .activateAfterLongPress(200)
+    .onUpdate((event) => {
+      const moveToLeft = event.translationX < 0
 
-    if(moveToLeft){
-      cardPosition.value = event.translationX
-    }
-  })
+      if(moveToLeft){
+        cardPosition.value = event.translationX
+      }
+    })
   .onEnd((event) => {
     if(event.translationX < CARD_SKIP_AREA){
       runOnJS(handleConfirm)()
