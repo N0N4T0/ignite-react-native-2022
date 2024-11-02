@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Alert, SafeAreaView, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Alert, Text, View } from 'react-native';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -44,6 +44,7 @@ export function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [quiz, setQuiz] = useState<QuizProps>({} as QuizProps);
   const [alternativeSelected, setAlternativeSelected] = useState<null | number>(null);
+  const [statusReply, setStatusReplay] = useState(0)
 
   const shake = useSharedValue(0)
   const scrollY = useSharedValue(0)
@@ -91,7 +92,9 @@ export function Quiz() {
 
     if (quiz.questions[currentQuestion].correct === alternativeSelected) {
       setPoints(prevState => prevState + 1);
+      setStatusReplay(1)
     } else {
+      setStatusReplay(2)
       shakeAnimation()
     }
 
@@ -204,7 +207,7 @@ export function Quiz() {
 
   return (
     <View style={styles.container}>
-      <OverlayFeeback status={0}/>
+      <OverlayFeeback status={statusReply}/>
 
       <Animated.View style={fixedProgressBarStyles}>
         <Text style={styles.title}>{quiz.title}</Text>
