@@ -28,6 +28,7 @@ import { ProgressBar } from '../../components/ProgressBar';
 import { THEME } from '../../styles/theme';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { OverlayFeeback } from '../../components/OverlayFeedback';
+import * as Haptics from 'expo-haptics'
 import { Audio } from 'expo-av';
 
 interface Params {
@@ -131,7 +132,9 @@ export function Quiz() {
     return true;
   }
 
-  function shakeAnimation(){
+  async function shakeAnimation(){
+    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
+
     shake.value = withSequence(
       withTiming(3, {duration: 400, easing: Easing.bounce}),
       withTiming(0, undefined, (finished => {
