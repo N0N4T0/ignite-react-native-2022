@@ -1,12 +1,23 @@
 import { Roboto_400Regular, Roboto_700Bold, useFonts } from '@expo-google-fonts/roboto';
-import { Text, View } from 'react-native';
+import { StatusBar, Text, View } from 'react-native';
 
 export default function App() {
-  const [fonstLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold})
+  const [fonstLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold })
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      {fonstLoaded ? <Text>Home</Text> : <View/>}
+    <View style={{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#202024'
+    }}
+    >
+      <StatusBar
+        barStyle='light-content'
+        backgroundColor="transparent"
+        translucent
+      />
+      {fonstLoaded ? <Text>Home</Text> : <View />}
     </View>
   );
 }
