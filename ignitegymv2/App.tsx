@@ -3,9 +3,10 @@ import { config } from './config/gluestack-ui.config';
 import { Center, GluestackUIStyledProvider, Text } from '@gluestack-ui/themed';
 import { StatusBar } from 'react-native';
 import { Loading } from '@components/Loading';
+import { SignIn } from '@screens/SignIn';
 
 export default function App() {
-  const [fonstLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold })
+  const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold })
 
   return (
     <GluestackUIStyledProvider config={config}>
@@ -15,13 +16,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fonstLoaded ? (
-        <Center flex={1} bg='$gray700'>
-          <Text>Home</Text>
-        </Center>
-      ) : (
-        <Loading />
-      )}
+      {fontsLoaded ? <SignIn /> : <Loading />}
 
     </GluestackUIStyledProvider>
   );
