@@ -1,9 +1,9 @@
-import { Center, Image, VStack, Text, Heading, ScrollView } from '@gluestack-ui/themed'
+import { Center, Heading, Image, ScrollView, Text, VStack } from '@gluestack-ui/themed'
 
 import BackgroundImg from '@assets/background.png'
 import Logo from '@assets/logo.svg'
-import { Input } from '@components/Input'
 import { Button } from '@components/Button'
+import { Input } from '@components/Input'
 
 export function SignIn() {
     return (
@@ -11,7 +11,7 @@ export function SignIn() {
             contentContainerStyle={{ flexGrow: 1 }}
             showsVerticalScrollIndicator={false}
         >
-            <VStack flex={1} bg="$gray700">
+            <VStack flex={1}>
                 <Image
                     w="$full"
                     h={624}

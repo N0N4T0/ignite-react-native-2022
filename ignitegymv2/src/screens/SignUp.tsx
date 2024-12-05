@@ -1,3 +1,7 @@
+import BackgroundImg from '@assets/background.png'
+import Logo from '@assets/logo.svg'
+import { Button } from '@components/Button'
+import { Input } from '@components/Input'
 import {
     Center,
     Heading,
@@ -6,17 +10,13 @@ import {
     Text,
     VStack,
 } from '@gluestack-ui/themed'
-import BackgroundImg from '@assets/background.png'
-import Logo from '@assets/logo.svg'
-import { Input } from '@components/Input'
-import { Button } from '@components/Button'
 export function SignUp() {
     return (
         <ScrollView
             contentContainerStyle={{ flexGrow: 1 }}
             showsVerticalScrollIndicator={false}
         >
-            <VStack flex={1} bg="$gray700">
+            <VStack flex={1}>
                 <Image
                     w="$full"
                     h={624}
