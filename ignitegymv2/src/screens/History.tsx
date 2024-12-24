@@ -1,4 +1,5 @@
-import { HistoryCard } from './HistoryCard'
+
+import { HistoryCard } from '@components/HistoryCard'
 import { ScreenHeader } from '@components/ScreenHeader'
 import { Heading, Text, VStack } from '@gluestack-ui/themed'
 import { useState } from 'react'
