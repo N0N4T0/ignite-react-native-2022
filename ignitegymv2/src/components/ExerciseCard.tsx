@@ -8,7 +8,9 @@ import {
   } from '@gluestack-ui/themed'
   import { ChevronRight } from 'lucide-react-native'
   import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
-  type Props = TouchableOpacityProps
+
+  type Props = TouchableOpacityProps & {}
+
   export function ExerciseCard({ ...props }: Props) {
     return (
       <TouchableOpacity {...props}>
