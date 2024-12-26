@@ -4,9 +4,29 @@ import { ScreenHeader } from "@components/ScreenHeader";
 import { UserPhoto } from "@components/UserPhoto";
 import { Center, ScrollView, VStack, Text, Heading } from "@gluestack-ui/themed";
 import { TouchableOpacity } from "react-native";
-
+import * as ImagePicker from 'expo-image-picker'
+import { useState } from "react";
 
 export function Profile() {
+  const [userPhoto, setUserPhoto] = useState(
+    'https://github.com/N0N4T0.png',
+  )
+
+  async function handleUserPhotoSelect() {
+    const photoSelected = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      quality: 1,
+      aspect: [4, 4],
+      allowsEditing: true,
+    })
+
+    if (photoSelected.canceled) {
+      return
+    }
+
+    setUserPhoto(photoSelected.assets[0].uri)
+  }
+
   return (
     <VStack flex={1}>
       <ScreenHeader title="Perfil" />
@@ -14,12 +34,12 @@ export function Profile() {
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
         <Center mt="$6" px="$10">
           <UserPhoto
-            source={{ uri: 'https://github.com/N0N4T0.png' }}
+            source={{ uri:  userPhoto}}
             size="xl"
             alt="Imagem do usuário"
           />
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleUserPhotoSelect}>
             <Text
               color="$green500"
               fontFamily="$heading"
